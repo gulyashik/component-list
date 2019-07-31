@@ -9,59 +9,25 @@ class List extends React.Component {
         this.state = {
           error: null,
           isLoaded: false,
-          token: []
+          list : props.value
+         
         };
       }
     
-      componentDidMount() {
-        fetch("http://localhost:3000/token")
-          .then(res => 
-              res.json()
-            )
-          .then(
-            (result) => {
-                
-              this.setState({
-                isLoaded: true,
-                token: result.token
-              });
-            },
-            // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-            // чтобы не перехватывать исключения из ошибок в самих компонентах.
-            (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
-            }
-          )
-      }
-    
       render() {
-        const { error, isLoaded, token } = this.state;
-        if (error) {
-          return <div>Ошибка: {error.message}</div>;
-        } else if (!isLoaded) {
-          return <div>Загрузка...</div>;
-        } else {
+        const { list } = this.state;
           return (
-            <ul>
-              {token.map(tok => (
-                <li key={tok.header}>
-                  {tok.header}  {tok.options}
+            
+                <ul className = "list">
+                   {list.map((option,opt_ind)=> (
+                <li key={ opt_ind}>
+                   {option} {opt_ind+1}
                 </li>
-              ))}
-            </ul>
+                 ))}
+                </ul>   
+             
           );
-        }
       }
 
-
-    //   return (
-    //     <li className="main-list">
-    //         {this.props.value}
-    //     </li>
-    //   );
-    
 }
 export default List;
