@@ -2,6 +2,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+## For run server :
+  ### npm install -g json-server
+  1) open folder comonents-list\src in terminal
+  2) use command :
+    ### json-server --watch server.json
+## For run UI:
+Install all dependencies:
+### npm install
+Run App:
+### npm run start
+
+
+
+
 In the project directory, you can run:
 
 ### `npm start`
